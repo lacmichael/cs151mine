@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import tools.Utilities;
+import mvc.Utilities;
 
 public class AppPanel extends JPanel implements ActionListener{
     private Mine mine;
