@@ -51,7 +51,6 @@ public class AppPanel extends JPanel implements ActionListener{
         s.addActionListener(this);
         controls.add(se);
         se.addActionListener(this);
-        controls.add(p);
         controls.setLayout(new GridLayout(0, 2));
         controls.setPreferredSize(new Dimension(500, 625));
         this.setLayout(new BorderLayout());
