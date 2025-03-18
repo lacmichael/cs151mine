@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-import tools.Subscriber;
+import mvc.Subscriber;
 
 public class MineView extends JPanel implements Subscriber{
     private Mine mine;

@@ -17,12 +17,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import mvc.Utilities;
 
-public class AppPanel extends JPanel implements ActionListener{
+public class MinePanel extends JPanel implements ActionListener{
     private Mine mine;
     private JPanel controls;
     private MineView view;
     
-    public AppPanel() {
+    public MinePanel() {
         mine = new Mine();
         view = new MineView(mine);
         controls = new JPanel();
@@ -166,7 +166,7 @@ public class AppPanel extends JPanel implements ActionListener{
     }
 
     public static void main(String[] args) {
-        AppPanel app = new AppPanel();
+        MinePanel app = new MinePanel();
     }
     
 }
