@@ -16,7 +16,7 @@ public class Model extends Publisher implements Serializable {
         changed();
     }
 
-    public boolean hasUnsavedChanges() {
+    public boolean getUnsavedChanges() {
         return unsavedChanges;
     }
 
