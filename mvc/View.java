@@ -3,7 +3,7 @@ package mvc;
 import javax.swing.JPanel;
 
 public class View extends JPanel implements Subscriber{
-    private Model model;
+    protected Model model;
 
     public View(Model model) {
         this.model = model;

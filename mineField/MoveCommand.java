@@ -13,11 +13,16 @@ public class MoveCommand extends Command {
 
     @Override
     public void execute() {
-        Field field = (Field) model;
+        MineField field = (MineField) model;
         int currentRow = field.getPlayerRow();
         int currentCol = field.getPlayerCol();
 
         int newRow = currentRow + heading.getRowChange();
         int newCol = currentCol + heading.getColChange();
+        try {
+            field.movePlayer(newRow, newCol);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
