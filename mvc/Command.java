@@ -1,11 +1,11 @@
 package mvc;
 
 public abstract class Command {
-    private Model model;
+    protected Model model;
 
     public Command(Model model) {
         this.model = model;
     }
 
-    protected abstract void execute() throws Exception;
+    public abstract void execute() throws Exception;
 }
