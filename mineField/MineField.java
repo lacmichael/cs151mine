@@ -1,9 +1,10 @@
 package mineField;
 
+import java.io.Serializable;
 import mvc.Model;
 import mvc.Utilities;
 
-public class MineField extends Model {
+public class MineField extends Model implements Serializable{
     private static final int SIZE = 20; 
     private Tile[][] field; 
     private int playerRow, playerCol;
@@ -79,24 +80,24 @@ public class MineField extends Model {
 
     public void movePlayer(int newRow, int newCol) throws Exception {
         if(end) {
-            throw new Exception("Game is over, can't move");
+            throw new InvalidMoveException("Game is over, can't move");
         }
         if (!isValid(newRow, newCol)) {
-            throw new Exception("Out of bounds move!");
+            throw new InvalidMoveException("Out of bounds move!");
         }
         if (field[newRow][newCol].isBomb()) {
             field[newRow][newCol].setVisited();
             uncoverTiles();
             end = true;
             changed();
-            throw new Exception("Game Over! You stepped on a mine.");
+            throw new MineException("Game Over! You stepped on a mine.");
         }
         if (field[newRow][newCol].isEnd()) {
             field[newRow][newCol].setVisited();
             uncoverTiles();
             end = true;
             changed();
-            throw new Exception("Congratulations! You reached the goal.");
+            throw new EndException("Congratulations! You reached the goal.");
         }
         field[newRow][newCol].setVisited();
         playerRow = newRow;

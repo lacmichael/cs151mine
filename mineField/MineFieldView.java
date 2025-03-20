@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.io.Serializable;
 import mvc.Model;
 import mvc.View;
 
-public class MineFieldView extends View {
+public class MineFieldView extends View implements Serializable{
     private int tileSize = 12;
 
     public MineFieldView(Model model) {
