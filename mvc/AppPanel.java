@@ -90,8 +90,11 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener  {
                 Utilities.inform(factory.about());
             } else if (cmmd.equals("Help")) {
                 Utilities.inform(factory.getHelp());
-            } else { // must be from Edit menu
-                //???
+            } else { // dynamic cmd
+                Command cmd = factory.makeEditCommand(model, cmmd, ae.getSource());
+                if(cmd != null){ // validity in button
+                    cmd.execute();
+                }
             }
         } catch (Exception e) {
             handleException(e);
