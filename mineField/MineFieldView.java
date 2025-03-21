@@ -14,13 +14,7 @@ public class MineFieldView extends View implements Serializable{
     public MineFieldView(Model model) {
         super(model);
         initView(model);
-        repaint();
-    }
-    
-    public void setModel(Model model) {
-        super.setModel(model);
-        initView(model);
-        repaint();
+        update();
     }
 
     public void initView(Model model) {
