@@ -8,15 +8,19 @@ import mvc.*;
 public class MineFieldPanel extends AppPanel{
     public MineFieldPanel(AppFactory factory) {
         super(factory);
-        controlPanel.setLayout(new GridLayout(4, 2));
+        controlPanel.setLayout(new GridLayout(4, 2, 15, 15));
+        view.setPreferredSize(new Dimension(300,300));
+        controlPanel.setPreferredSize(new Dimension(300, 300));
+        frame.pack();
+        controlPanel.setBorder(BorderFactory.createEmptyBorder(25,25,25,25));
+        
 
         for (String cmd : factory.getEditCommands()) {
-            JPanel p = new JPanel();
             JButton b = new JButton(cmd);
-            p.add(b);
             b.addActionListener(this);
-            controlPanel.add(p);
+            controlPanel.add(b);
         }
+        
     }
 
     @Override

@@ -8,32 +8,16 @@ import mvc.Model;
 import mvc.View;
 
 public class MineFieldView extends View {
-    private int tileSize = 12;
 
     public MineFieldView(Model model) {
         super(model);
-        initView(model);
-        repaint();
-    }
-    
-    public void setModel(Model model) {
-        super.setModel(model);
-        initView(model);
-        repaint();
     }
 
-    public void initView(Model model) {
-        MineField field = (MineField) model;
-        int rows = field.getSize();
-        int cols = field.getSize();
-        setPreferredSize(new Dimension(cols * tileSize, rows * tileSize));
-    }
-
-    public void drawTile(Graphics g, Tile t, int row, int col, MineField f) {
+    public void drawTile(Graphics g, Tile t, int row, int col, int tileSize) {
         int x = col * tileSize;
         int y = row * tileSize;
         if(t.isVisited()) {
-            g.setFont(new Font("Arial", Font.ITALIC, 8));
+            g.setFont(new Font("Arial", Font.BOLD, tileSize / 2));
             g.setColor(Color.GRAY);
             g.fillRect(x, y, tileSize, tileSize);
             g.setColor(Color.BLACK);
@@ -54,7 +38,7 @@ public class MineFieldView extends View {
             g.setColor(Color.BLACK);
             g.drawRect(x, y, tileSize, tileSize);
             g.setColor(Color.BLACK);
-            g.drawString("?", x + tileSize / 2, y + tileSize);
+            g.drawString("?", x + tileSize / 3, y + tileSize * 2/3);
         }
         if (t.isEnd()) {
             g.setColor(Color.GREEN);
@@ -65,11 +49,19 @@ public class MineFieldView extends View {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         MineField field = (MineField) model;
-        int size = field.getSize();
+        int rows = field.getSize();
+        int cols = field.getSize();
+        int panelWidth = getWidth();
+        int panelHeight = getHeight();
+        int tileW = panelWidth / cols;
+        int tileH = panelHeight / rows;
+        int tileSize = Math.min(tileW, tileH);
+
+
         Tile[][] mineField = field.getField();
-        for(int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                drawTile(graphics, mineField[i][j], i, j, field);
+        for(int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                drawTile(graphics, mineField[row][col], row, col, tileSize);
             }
         }
 
