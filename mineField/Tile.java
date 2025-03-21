@@ -1,6 +1,8 @@
 package mineField;
 
-public class Tile {
+import java.io.Serializable;
+
+public class Tile implements Serializable{
     private boolean visited;
     private boolean bomb;
     private int adjBombs;

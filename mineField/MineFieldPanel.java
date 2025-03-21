@@ -60,23 +60,20 @@ public class MineFieldPanel extends AppPanel{
                     break;
 
                 default:
-                    if (model instanceof MineField && ((MineField) model).isEnd()) {
-                        JOptionPane.showMessageDialog(this, "Game is over! Cannot move.", "Game Over",
-                                JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-
                     Command editCommand = factory.makeEditCommand(model, command, actionEvent.getSource());
                     if (editCommand != null) {
                         editCommand.execute();
                     }
             }
-        // } catch (MineHitException e) {
-        //     JOptionPane.showMessageDialog(this, e.getMessage(), "Game Over", JOptionPane.ERROR_MESSAGE);
-        // } catch (GoalReachedException e) {
-        //     JOptionPane.showMessageDialog(this, e.getMessage(), "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            handleException(e);
+        } catch (MineException e) {
+            Utilities.error(e.getMessage());
+        } catch (EndException e) {
+            Utilities.error(e.getMessage());
+        } catch (InvalidMoveException e) {
+            Utilities.error(e.getMessage());
+        }
+        catch (Exception e) {
+            Utilities.error(e.getMessage());
         }
     }
 

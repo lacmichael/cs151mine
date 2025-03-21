@@ -22,7 +22,7 @@ public class MoveCommand extends Command {
         try {
             field.movePlayer(newRow, newCol);
         } catch (Exception e) {
-            System.out.println(e);
+            throw new RuntimeException(e);
         }
     }
 }

@@ -31,6 +31,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener  {
         frame.setJMenuBar(createMenuBar());
         frame.setTitle(factory.getTitle());
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        frame.setResizable(false);
     }
 
     public void display() { frame.setVisible(true); }
@@ -53,7 +54,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener  {
         JMenuBar result = new JMenuBar();
         // add file, edit, and help menus
         JMenu fileMenu =
-                Utilities.makeMenu("File", new String[] {"New",  "Save", "SaveAs", "Open", "Quit"}, this);
+                Utilities.makeMenu("File", new String[] {"New",  "Save", "Save As", "Open", "Quit"}, this);
         result.add(fileMenu);
 
         JMenu editMenu =
